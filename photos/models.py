@@ -9,8 +9,6 @@ class Profile(models.Model):
                 User,
                 on_delete=models.CASCADE,
             )
-    
-    # user = models.ForeignKey('User',on_delete=models.CASCADE)#,null=True
 
     def save_profile(self):
         return self.save()
@@ -18,3 +16,59 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'Profile: {self.user}'
+
+
+class Image(models.Model):
+
+    image = CloudinaryField('image')
+    name = models.CharField(max_length=60)
+    caption = models.TextField()
+    profile = models.ForeignKey('Profile',on_delete=models.CASCADE)
+    likes = models.IntegerField()
+    comment = models.TextField()
+    
+
+
+    # def save_image(self):
+    #     return self.save()
+
+    # @classmethod
+    # def update_image(cls,update_details,id):
+    #     return cls.objects.filter(id=int(id)).update(image=update_details['image'],
+    #                                            name=update_details['name'],
+    #                                            description=update_details['description'],
+    #                                            category=update_details['category'],
+    #                                            location=update_details['location'])
+    
+    # @classmethod
+    # def search_category(cls,category):
+    #     try:
+    #         #results = cls.objects.get(category__name__icontains=category)
+    #         results = cls.objects.all().filter(category__name__icontains=category)
+    #     except:
+    #         results=''
+
+    #     return results
+
+    # @classmethod
+    # def filter_by_location(cls,location):
+    #     results = cls.objects.filter(location=location)
+
+    #     return results
+
+    # def copy_image_url(self):
+    #     return pyperclip.copy(self.image.url)
+
+
+    # def delete_image(self):
+    #     return self.delete()
+
+    # @classmethod
+    # def get_image_by_id(cls,id):
+    #     image = cls.objects.get(pk=id)
+    #     return image
+
+    def __str__(self):
+        return f'Image: {self.name}'
+
+
