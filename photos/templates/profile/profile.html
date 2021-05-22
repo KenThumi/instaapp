@@ -3,9 +3,30 @@
 {% block content %}
 <div class="container my-2">
     <div class="row">
-        
+        <div class="col-md-4 offset-md-2">
+            {% if user.profile %}
+
+            <img src="{{user.profile.profile_photo.url }}" alt="" class="rounded-circle img-thumbnail">
+
+            {%else%}
+            <ul class="list-group mt-md-3">
+                <li class="list-group-item">
+                      <p>No profile picture</p>
+                </li>
+                <br>
+                <li class="list-group-item ">
+                    <a href="#" class="btn btn-sm btn-outline-warning mx-auto d-block my-2">
+                        <i class="fas fa-plus-circle mr-1" aria-hidden="true"></i>
+                        Add Bio </a>
+                </li>
+            </ul>
+
+            {% endif %}
+
+    
+        </div>
         <div class="col-md-4">
-            <ul class="list-group">
+            <ul class="list-group mt-3">
                 <li class="list-group-item">
                     <h3> {{user.username| title}} </h3>
                 </li>
@@ -27,18 +48,7 @@
             
        
         </div>
-        <div class="col-md-4">
-                        {% if user.profile %}
 
-                        <img src="{{user.profile.profile_photo.url }}" alt="" class="img-thumbnail">
-
-                        {%else%}
-                        <p>No profile picture</p>
-
-                        {% endif %}
-
-                
-        </div>
     </div>
 
 </div>
