@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
+{% load bootstrap4 %} {% load static %}
 
 {% block content %}
-<div class="container">
-  {{wtf.quick_form(form)}}
+<div class="container my-2">
+  <h4>Add Bio</h4>
+   <form   method="post" enctype="multipart/form-data">
+   {%csrf_token%}
+
+   {% bootstrap_form form%}
+   <input type="submit" class="btn btn-success btn-sm" value="Post">
+ </form>
 </div>
 {% endblock %}

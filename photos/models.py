@@ -12,6 +12,9 @@ class Profile(models.Model):
     
     # user = models.ForeignKey('User',on_delete=models.CASCADE)#,null=True
 
+    def save_profile(self):
+        return self.save()
+
 
     def __str__(self):
         return f'Profile: {self.user}'
