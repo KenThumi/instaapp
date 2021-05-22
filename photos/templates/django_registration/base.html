@@ -16,12 +16,14 @@
 
   {% block styles %}
     {% bootstrap_css %}
+    <!-- css -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   {% endblock %}
 
 </head>
 
 <body>
-    {% include "navbar.html" %}
+    {% include "../navbar.html" %}
   {% block content %}  
   
   {%endblock%}
