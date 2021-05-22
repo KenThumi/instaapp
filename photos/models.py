@@ -1,11 +1,12 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
 
 class Profile(models.Model):
     profile_photo = CloudinaryField('image')
     bio = models.TextField()
     user = models.OneToOneField(
-                'User',
+                User,
                 on_delete=models.CASCADE,
             )
     

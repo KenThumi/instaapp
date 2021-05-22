@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container my-2">
+    <div class="row">
+        
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h3> {{user.username| title}} </h3>
+                </li>
+                <li class="list-group-item">
+                    Email <span class="text-muted">
+                    <p>{{user.email}}</p> 
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    Bio <span class="text-muted">
+                        {% if user.profile %}
+                        <p> {{user.profile.bio}}</p>
+                        {%else%}
+                        <p> {{user.username| title}} has no bio </p>
+                        {% endif %}
+                    </span>
+                
+            </ul>
+            
+       
+        </div>
+        <div class="col-md-4">
+                        {% if user.profile %}
+
+                        <img src="{{user.profile.profile_photo.url }}" alt="" class="img-thumbnail">
+
+                        {%else%}
+                        <p>No profile picture</p>
+
+                        {% endif %}
+
+                
+        </div>
+    </div>
+
+</div>
+{% endblock %}
