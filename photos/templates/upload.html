@@ -4,13 +4,14 @@
 {% block content %}
 <div class="container my-2">
   <div class="text-center">
-    <h4>Add Bio</h4>
+    <h4>Upload image</h4>
+    <hr>
   </div>
    <form   method="post" enctype="multipart/form-data">
    {%csrf_token%}
 
    {% bootstrap_form form%}
-   <input type="submit" class="btn btn-success btn-sm" value="Post">
+   <input type="submit" class="btn btn-success btn-sm" value="Upload">
  </form>
 </div>
 {% endblock %}

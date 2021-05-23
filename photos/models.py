@@ -15,7 +15,7 @@ class Profile(models.Model):
 
 
     def __str__(self):
-        return f'Profile: {self.user}'
+        return f'Profile: {self.user.username}'
 
 
 class Image(models.Model):
@@ -24,7 +24,7 @@ class Image(models.Model):
     name = models.CharField(max_length=60)
     caption = models.TextField()
     profile = models.ForeignKey('Profile',on_delete=models.CASCADE)
-    likes = models.IntegerField()
+    likes = models.IntegerField(null=True)
     comment = models.TextField()
     
 
