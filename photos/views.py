@@ -81,3 +81,9 @@ def upload(request):
 
     ctx = {'form':form}
     return render(request,'upload.html',ctx)
+
+
+def openimage(request,image_id):
+    image = Image.objects.get(pk=image_id)
+
+    return render(request,'image.html', {'image':image})
