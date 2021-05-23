@@ -87,3 +87,13 @@ def openimage(request,image_id):
     image = Image.objects.get(pk=image_id)
 
     return render(request,'image.html', {'image':image})
+
+
+def like(request,image_id):
+    image = Image.objects.get(pk=image_id)
+
+    image.likes = 1 if image.likes ==None else (image.likes +1)   
+
+    image.save()
+
+    return render(request,'image.html', {'image':image})

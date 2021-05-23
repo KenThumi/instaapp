@@ -7,5 +7,6 @@ urlpatterns = [
     path('profile/',views.profile, name='profile'),
     path('addprof/<int:id>',views.addprof, name='addprof'),
     path('upload/',views.upload,name='upload'),
-    path('openimage/<int:image_id>',views.openimage,name='openimage')
+    path('openimage/<int:image_id>',views.openimage,name='openimage'),
+    path('like/<int:image_id>',views.like,name='like')
 ]
