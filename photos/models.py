@@ -39,13 +39,12 @@ class Image(models.Model):
     #     return True
 
 
-    # @classmethod
-    # def update_image(cls,update_details,id):
-    #     return cls.objects.filter(id=int(id)).update(image=update_details['image'],
-    #                                            name=update_details['name'],
-    #                                            description=update_details['description'],
-    #                                            category=update_details['category'],
-    #                                            location=update_details['location'])
+    @classmethod
+    def update_caption(cls,update_details,id):
+        return cls.objects.filter(id=int(id)).update(image=update_details['image'],
+                                               name=update_details['name'],
+                                               caption=update_details['caption'],
+                                               profile=update_details['profile'])
     
     # @classmethod
     # def search_category(cls,category):
@@ -74,6 +73,8 @@ class Image(models.Model):
     # def get_image_by_id(cls,id):
     #     image = cls.objects.get(pk=id)
     #     return image
+    class Meta:
+        ordering = ["-pk"]
 
     def __str__(self):
         return f'Image: {self.name}'
@@ -85,6 +86,10 @@ class Comment(models.Model):
     image = models.ForeignKey('Image', on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comments')
     created = models.DateTimeField(auto_now_add=True)
+
+
+    class Meta:
+        ordering = ["-pk"]
 
     def __str__(self):
         return f'{self.user.user.username} Comment on {self.image.name}'

@@ -3,6 +3,7 @@ from photos.forms import CommentForm, ImageForm, ProfileForm
 from django.shortcuts import render,redirect
 import cloudinary.uploader
 from .models import Image, Profile
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -118,3 +119,42 @@ def comment(request,image_id):
 
 
     return render(request,'commentForm.html', {'form': CommentForm()})
+
+
+def edit(request,image_id):
+    image = Image.objects.get(pk=int(image_id))
+
+    if request.method=='POST':
+        form = ImageForm(request.POST,request.FILES)
+    
+        try:
+            file_to_upload = request.FILES['image']
+        except:
+            messages.error(request, 'Kindly select an image.')
+           
+      
+        if form.is_valid():
+           
+            if file_to_upload:
+                upload_result = cloudinary.uploader.upload(file_to_upload)
+                new_result = remove_prefix(upload_result['secure_url'],'https://res.cloudinary.com/dtw9t2dom/')
+
+                image_result = new_result if new_result else image.image
+
+                update_details = {'image':image_result,
+                                'name':form.cleaned_data['name'],
+                                    'caption':form.cleaned_data['caption'],
+                                    'profile':request.user.profile}
+
+                Image.update_caption(update_details,image_id)
+
+                messages.success(request, 'Successful edit.')
+                return redirect('openimage', image_id)
+
+
+
+    form = ImageForm(instance=image)
+
+    ctx = {'form':form}
+
+    return render(request,'upload.html',ctx)

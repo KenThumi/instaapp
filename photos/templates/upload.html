@@ -7,6 +7,19 @@
     <h4>Upload image</h4>
     <hr>
   </div>
+         <!-- flash msgs -->
+         {% if messages %}
+         <div class="col-12">
+          
+          {% for msg in messages %}
+            <div class="alert alert-danger alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              {{msg.message}}
+            </div>
+          {% endfor %}
+        
+         </div>
+          {% endif %}
    <form   method="post" enctype="multipart/form-data">
    {%csrf_token%}
 
