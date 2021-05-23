@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from photos.forms import ImageForm, ProfileForm
 from django.shortcuts import render,redirect
 import cloudinary.uploader
@@ -10,7 +11,9 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     images = Image.objects.all()
 
-    ctx = {'images':images}
+    users = user = User.objects.exclude(username=request.user.username) 
+
+    ctx = {'images':images, 'users':users}
 
     return render(request, 'index.html',ctx)
 

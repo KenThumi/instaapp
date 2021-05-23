@@ -25,3 +25,7 @@ body{
 .card a:hover{
     text-decoration: none;
 }
+
+.follow-link{
+    color:#96DCEE !important;
+}
