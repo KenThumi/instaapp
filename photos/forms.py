@@ -10,5 +10,5 @@ class ProfileForm(forms.ModelForm):
 class ImageForm(forms.ModelForm):
   class Meta:
       model = Image
-      exclude = ['likes']
+      exclude = ['likes','profile','comments']
     #   fields = '__all__'
