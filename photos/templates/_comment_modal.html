@@ -11,8 +11,11 @@
                             {{ comment.comment }}
                         </div>
                         <p>
-                          <div class="float-left text-mute">
-                                  -{{ comment.user }}
+                          <div class="float-right text-mute">
+                              <small>
+                                -{{ comment.user.user.username }}
+                              </small>
+                                 
                           </div>
                         </p>
                             
