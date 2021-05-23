@@ -29,8 +29,8 @@ class Image(models.Model):
     
 
 
-    # def save_image(self):
-    #     return self.save()
+    def save_image(self):
+        return self.save()
 
     # @classmethod
     # def update_image(cls,update_details,id):
