@@ -32,6 +32,14 @@ class Image(models.Model):
     def save_image(self):
         return self.save()
 
+    # @property
+    # def isOwner(self):
+    #     # print(request.user.id)
+    #     print(self.request.user.id)
+    #     # return self.profile.user.id == request.user.id
+    #     return True
+
+
     # @classmethod
     # def update_image(cls,update_details,id):
     #     return cls.objects.filter(id=int(id)).update(image=update_details['image'],

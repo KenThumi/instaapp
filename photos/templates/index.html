@@ -44,51 +44,51 @@
                                 <img class="imge img-fluid" src="{{image.image.url}}" alt="lorem">
                             </a>
                             <div class="card-body">
-                                {{image.name | title}}
+                                <p>
+                                    Likes: <strong>
+                                        {{ image.likes }}
+                                    </strong>
+                                </p>
+                                <p>
+                                    {{image.name | title}}
+                                </p>
                             </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <div class="text-center">
-                                            <a href="#">
+                            {% if user.is_authenticated %}
+                                {% if user == image.profile.user %}
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="text-center">
+                                                <a href="#">
+                                                    <span class="text-center">
+                                                        
+                                                        <div >
+                                                          Edit
+                                                            <i class="fas fa-edit ml-1"></i>
+                                                        </div>
+                                                        
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                   
+                                        <div class="col-4 text-center">
+                                            <a href="#"   onclick="return confirm('Confirm Delete')">
                                                 <span class="text-center">
+                                                    <div>
+                                                         Delete
+                                                        <i class="fas fa-trash-alt ml-1"></i>
+                                                    </div> 
                                                     
-                                                    <div >
-                                                        <span class="d-sm-none d-md-block"> Edit</span>
-                                                        <i class="fas fa-edit ml-1"></i>
-                                                    </div>
                                                     
                                                 </span>
                                             </a>
+                                            
                                         </div>
                                     </div>
-                                    <div class="col-4 text-center">
-                                        <a  href="#" target="_blank"   data-toggle="modal" data-target="#modal-{{image.id}}" >
-                                            <span class="text-center">
-                                                <div>
-                                                    <span class="d-sm-none d-md-block"> More..</span>
-                                                    <i class="fas fa-expand-arrows-alt ml-1"></i>
-                                                </div> 
-                                                
-                                            </span>
-                                        </a>
-                                    
-                                    </div>
-                                    <div class="col-4 text-center">
-                                        <a href="#"   onclick="return confirm('Confirm Delete')">
-                                            <span class="text-center">
-                                                <div>
-                                                    <span class="d-sm-none d-md-block"> Delete</span>
-                                                    <i class="fas fa-trash-alt ml-1"></i>
-                                                </div> 
-                                                
-                                                
-                                            </span>
-                                        </a>
-                                        
-                                    </div>
                                 </div>
-                            </div>
+                                {%endif%}
+                            {%endif%}
                     </div>
                     
                 </div>
