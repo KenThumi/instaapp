@@ -8,8 +8,11 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
+    images = Image.objects.all()
 
-    return render(request, 'index.html')
+    ctx = {'images':images}
+
+    return render(request, 'index.html',ctx)
 
 
 @login_required(login_url='/accounts/login/')

@@ -2,5 +2,114 @@
 
 {% block content %}
 {{block.super}}
-<h3>Lorem Ipsum</h3>
+<div class="container my-2">
+    <div class="row">
+        <div class="col-12">
+            <div class="float-right">
+                      <!-- upload btn -->
+                <a href="{% url 'upload' %}" class="btn btn-sm btn-info">
+                    <span class="text-center">
+                        Upload Photo <i class="fas fa-upload"></i>
+                    </span>
+                </a>
+            </div>
+            
+        </div>
+        <hr>
+        <!-- images -->
+        <div class="col-md-8">
+            {%for image in images %}
+                <div class="col-mdd-4">
+                        <div class="card my-3" style="width: 100%;">
+                            <div class="card-header">
+                                <div >
+                                       <div class="float-left">
+                                              <img src="{% firstof image.profile.profile_photo.url  'https://res.cloudinary.com/dtw9t2dom/image/upload/v1621726020/akfqmmsh2bcebfxmkizd.png' %}" alt="{{image.profile.user.username}}" class="img-fluid rounded-circle float-left" style="width: 50px;">
+                                              <div class="ml-2 float-left ln-3">
+                                                  {{image.profile.user.username}}
+                                              </div>
+                                       </div>
+                                       <div class="float-right inline-block ln-3">
+                                           <a href="#" class="links">
+                                            like<i class="fas fa-heart ml-2"></i>
+                                           </a>
+
+                                           <a href="#" class="links ml-5">
+                                            comment<i class="fas fa-comment ml-2"></i>
+                                           </a>
+                                       </div>
+                                </div>
+                            </div>
+                            <a href="#" target="_blank">
+                                <img class="imge img-fluid" src="{{image.image.url}}" alt="lorem">
+                            </a>
+                            <div class="card-body">
+                                {{image.name | title}}
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="text-center">
+                                            <a href="#">
+                                                <span class="text-center">
+                                                    
+                                                    <div >
+                                                        <span class="d-sm-none d-md-block"> Edit</span>
+                                                        <i class="fas fa-edit ml-1"></i>
+                                                    </div>
+                                                    
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <a  href="#" target="_blank"   data-toggle="modal" data-target="#modal-{{image.id}}" >
+                                            <span class="text-center">
+                                                <div>
+                                                    <span class="d-sm-none d-md-block"> More..</span>
+                                                    <i class="fas fa-expand-arrows-alt ml-1"></i>
+                                                </div> 
+                                                
+                                            </span>
+                                        </a>
+                                    
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <a href="#"   onclick="return confirm('Confirm Delete')">
+                                            <span class="text-center">
+                                                <div>
+                                                    <span class="d-sm-none d-md-block"> Delete</span>
+                                                    <i class="fas fa-trash-alt ml-1"></i>
+                                                </div> 
+                                                
+                                                
+                                            </span>
+                                        </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    
+                </div>
+            {%empty%}
+            <div class="text-center">
+                
+                        No records   
+            </div>
+            {%endfor%}
+            <!-- end images -->
+         </div>
+
+         <!-- users -->
+         <div class="col-md-4">
+             <div class="p-3">
+                 Users
+             </div>
+         </div>
+        
+
+    </div>
+  
+</div>
 {%endblock%}
