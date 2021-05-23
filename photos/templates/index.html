@@ -16,6 +16,19 @@
             
         </div>
         <hr>
+           <!-- flash messages -->
+       {% if messages %}
+       <div class="col-12">
+        
+        {% for msg in messages %}
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{msg.message}}
+          </div>
+        {% endfor %}
+      
+       </div>
+        {% endif %}
         <!-- images -->
         <div class="col-md-8">
             {%for image in images %}
@@ -34,7 +47,7 @@
                                             like<i class="fas fa-heart ml-2"></i>
                                            </a>
 
-                                           <a href="#" class="links ml-5">
+                                           <a href="{% url 'comment' image.id%}" class="links ml-5">
                                             comment<i class="fas fa-comment ml-2"></i>
                                            </a>
                                        </div>

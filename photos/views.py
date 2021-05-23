@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from photos.forms import ImageForm, ProfileForm
+from photos.forms import CommentForm, ImageForm, ProfileForm
 from django.shortcuts import render,redirect
 import cloudinary.uploader
 from .models import Image, Profile
@@ -68,7 +68,6 @@ def upload(request):
         file_to_upload = request.FILES['image']
       
         if form.is_valid():
-            print('Tuko fiti kabisa')
             upload_result = cloudinary.uploader.upload(file_to_upload)
             new_result = remove_prefix(upload_result['secure_url'],'https://res.cloudinary.com/dtw9t2dom/')
 
@@ -100,3 +99,22 @@ def like(request,image_id):
     image.save()
 
     return render(request,'image.html', {'image':image})
+
+
+
+def comment(request,image_id):
+    image = Image.objects.get(pk=image_id)
+
+    if request.method=='POST':
+            form = CommentForm(request.POST,request.FILES)
+        
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.user = request.user.profile
+                comment.image = image
+                comment.save()
+
+                return redirect('openimage', image_id)
+
+
+    return render(request,'commentForm.html', {'form': CommentForm()})
