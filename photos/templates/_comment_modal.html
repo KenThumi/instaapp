@@ -1,0 +1,37 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content p-3">
+        <ul class="my-2 list-group">
+          
+                
+                    {% for comment in image.comments.all %}
+                      <li class="list-group-item">
+                        <div class="text-italic">
+                            {{ comment.comment }}
+                        </div>
+                        <p>
+                          <div class="float-left text-mute">
+                                  -{{ comment.user }}
+                          </div>
+                        </p>
+                            
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">
+                            No Comments
+                        </li>
+                    {% endfor %}
+               
+          
+         
+      </ul>
+      <a href="{% url 'comment' image.id %}" target="_blank"  class="btn btn-sm  btn-info my-1 mx-2">
+        Comment
+        <span class="ml-1">
+        <i class="fas fa-comment" aria-hidden="true"></i>
+        </span>
+      </a>
+      </div>
+    </div>
+  </div>

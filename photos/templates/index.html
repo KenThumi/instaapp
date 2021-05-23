@@ -65,6 +65,11 @@
                                 <p>
                                     {{image.name | title}}
                                 </p>
+                                <p>
+                                    <a href="#" class="links btn btn-sm btn-outline-info"  data-toggle="modal" data-target="#modal-{{image.id}}">
+                                        view comments<i class="fas fa-comments ml-2"></i>
+                                       </a>
+                                </p>
                             </div>
                             {% if user.is_authenticated %}
                                 {% if user == image.profile.user %}
@@ -103,7 +108,7 @@
                                 {%endif%}
                             {%endif%}
                     </div>
-                    
+                    {% include '_comment_modal.html' %}
                 </div>
             {%empty%}
             <div class="text-center">
