@@ -47,3 +47,26 @@ class ImageTestClass(TestCase):
         images = Image.objects.all()
 
         self.assertTrue(len(images)>0)
+
+    
+    def test_update_caption(self):
+        self.user_1.save()
+        self.profile.save()
+        self.image.save()
+
+        update_details = {'image':'newlink.png',
+                               'name':'image_name',
+                                'caption':'some image description',
+                                'profile':self.user_1.profile,
+                             }
+
+
+        Image.update_caption(update_details, self.image.id)
+
+        self.updated_image = Image.objects.get(pk = self.image.id) #get new updated image
+
+        cloudinary_url_prefix = 'http://res.cloudinary.com/dtw9t2dom/image/upload/'
+
+        self.assertEqual(self.updated_image.image.url, cloudinary_url_prefix+'newlink.png')
+
+
