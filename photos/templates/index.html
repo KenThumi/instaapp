@@ -91,7 +91,7 @@
                                         </div>
                                    
                                         <div class="col-4 text-center">
-                                            <a href="#"   onclick="return confirm('Confirm Delete')">
+                                            <a href="{% url 'delete_image' image.id%}"   onclick="return confirm('Confirm Delete')">
                                                 <span class="text-center">
                                                     <div>
                                                          Delete

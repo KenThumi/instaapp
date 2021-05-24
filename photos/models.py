@@ -32,11 +32,11 @@ class Image(models.Model):
         return self.save()
 
     # @property
-    # def isOwner(self):
+    # def isOwner(self,re):
     #     # print(request.user.id)
     #     print(self.request.user.id)
-    #     # return self.profile.user.id == request.user.id
-    #     return True
+    #     return self.profile.user.id == request.user.id
+       
 
 
     @classmethod
@@ -66,8 +66,8 @@ class Image(models.Model):
     #     return pyperclip.copy(self.image.url)
 
 
-    # def delete_image(self):
-    #     return self.delete()
+    def delete_image(self):
+        return self.delete()
 
     # @classmethod
     # def get_image_by_id(cls,id):

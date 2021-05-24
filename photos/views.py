@@ -158,3 +158,16 @@ def edit(request,image_id):
     ctx = {'form':form}
 
     return render(request,'upload.html',ctx)
+
+
+def delete_image(request,image_id):
+    image = Image.objects.get(pk=int(image_id))
+
+    for comment in image.comments.all():  #delete any comments
+           comment.delete()
+
+    image.delete_image()
+
+    messages.success(request, 'Image Deleted successfully.')
+    
+    return redirect('home')
