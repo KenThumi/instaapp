@@ -23,7 +23,7 @@ class Image(models.Model):
     image = CloudinaryField('image')
     name = models.CharField(max_length=60)
     caption = models.TextField()
-    profile = models.ForeignKey('Profile',on_delete=models.CASCADE)
+    profile = models.ForeignKey('Profile',on_delete=models.CASCADE,related_name='images')
     likes = models.IntegerField(null=True)
     
 

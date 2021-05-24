@@ -79,7 +79,7 @@ def upload(request):
 
             image.save_image()
 
-            # messages.success(request, 'Successful upload.')
+            messages.success(request, 'Successful upload.')
             return redirect('home')
 
     ctx = {'form':form}
