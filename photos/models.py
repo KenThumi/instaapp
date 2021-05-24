@@ -40,17 +40,7 @@ class Image(models.Model):
 
     def save_image(self):
         return self.save()
-
-
-    
-
-    # @property
-    # def isOwner(self,re):
-    #     # print(request.user.id)
-    #     print(self.request.user.id)
-    #     return self.profile.user.id == request.user.id
        
-
 
     @classmethod
     def update_caption(cls,update_details,id):
@@ -59,33 +49,11 @@ class Image(models.Model):
                                                caption=update_details['caption'],
                                                profile=update_details['profile'])
     
-    # @classmethod
-    # def search_category(cls,category):
-    #     try:
-    #         #results = cls.objects.get(category__name__icontains=category)
-    #         results = cls.objects.all().filter(category__name__icontains=category)
-    #     except:
-    #         results=''
-
-    #     return results
-
-    # @classmethod
-    # def filter_by_location(cls,location):
-    #     results = cls.objects.filter(location=location)
-
-    #     return results
-
-    # def copy_image_url(self):
-    #     return pyperclip.copy(self.image.url)
 
 
     def delete_image(self):
         return self.delete()
 
-    # @classmethod
-    # def get_image_by_id(cls,id):
-    #     image = cls.objects.get(pk=id)
-    #     return image
     class Meta:
         ordering = ["-pk"]
 
