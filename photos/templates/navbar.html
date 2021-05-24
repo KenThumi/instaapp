@@ -10,8 +10,9 @@
           <a class="nav-link" href="{%url 'home'%}">Home </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="{%url 'users' %}">Users</a>
       </ul>
+      {% if user.is_authenticated %}
       <form class="form-inline my-2 my-lg-0 mx-md-auto" method="POST" action="{% url 'search' %}">
         {% csrf_token %}
         <input name='search' class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search image name" aria-label="Search">
@@ -19,6 +20,7 @@
           <i class="fas fa-search"></i>
         </button>
       </form>
+      {%endif%}
       {% if user.is_authenticated %}
       <ul class="navbar-nav mr-md-5">
         <li class="nav-item dropdown float-md-right">

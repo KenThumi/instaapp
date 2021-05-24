@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required(login_url='/accounts/login/')
 def home(request):
     images = Image.objects.all()
 
@@ -189,3 +189,9 @@ def search(request):
         return render(request, 'index.html',ctx)
 
     return redirect('home')
+
+
+def users(request):
+    users = User.objects.exclude(username=request.user.username) 
+
+    return render(request,'users.html', {'users':users})

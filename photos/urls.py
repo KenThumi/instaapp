@@ -12,5 +12,6 @@ urlpatterns = [
     path('comment/<int:image_id>', views.comment, name='comment'),
     path('edit/<int:image_id>', views.edit, name='edit'),
     path('delete_image/<int:image_id>',views.delete_image,name='delete_image'),
-    path('search',views.search, name='search')
+    path('search',views.search, name='search'),
+    path('users',views.users,name='users')
 ]
