@@ -85,13 +85,13 @@ def upload(request):
     ctx = {'form':form}
     return render(request,'upload.html',ctx)
 
-
+@login_required(login_url='/accounts/login/')
 def openimage(request,image_id):
     image = Image.objects.get(pk=image_id)
 
     return render(request,'image.html', {'image':image})
 
-
+@login_required(login_url='/accounts/login/')
 def like(request,image_id):
     image = Image.objects.get(pk=image_id)
 
@@ -102,7 +102,7 @@ def like(request,image_id):
     return render(request,'image.html', {'image':image})
 
 
-
+@login_required(login_url='/accounts/login/')
 def comment(request,image_id):
     image = Image.objects.get(pk=image_id)
 
@@ -120,7 +120,7 @@ def comment(request,image_id):
 
     return render(request,'commentForm.html', {'form': CommentForm()})
 
-
+@login_required(login_url='/accounts/login/')
 def edit(request,image_id):
     image = Image.objects.get(pk=int(image_id))
 
@@ -159,7 +159,7 @@ def edit(request,image_id):
 
     return render(request,'upload.html',ctx)
 
-
+@login_required(login_url='/accounts/login/')
 def delete_image(request,image_id):
     image = Image.objects.get(pk=int(image_id))
 
@@ -173,7 +173,7 @@ def delete_image(request,image_id):
     return redirect('home')
 
 
-
+@login_required(login_url='/accounts/login/')
 def search(request):
 
     if request.method=='POST':
@@ -190,7 +190,7 @@ def search(request):
 
     return redirect('home')
 
-
+@login_required(login_url='/accounts/login/')
 def users(request):
     users = User.objects.exclude(username=request.user.username) 
 

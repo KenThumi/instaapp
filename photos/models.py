@@ -14,6 +14,16 @@ class Profile(models.Model):
         return self.save()
 
 
+    @classmethod
+    def update_profile(cls,update_details,id):
+        return cls.objects.filter(id=int(id)).update(profile_photo=update_details['profile_photo'],
+                                               bio=update_details['bio'],
+                                               user=update_details['user'])
+
+    def delete_profile(self):
+        return self.delete()
+
+
     def __str__(self):
         return f'Profile: {self.user.username}'
 
@@ -30,6 +40,9 @@ class Image(models.Model):
 
     def save_image(self):
         return self.save()
+
+
+    
 
     # @property
     # def isOwner(self,re):
@@ -90,6 +103,21 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ["-pk"]
+
+
+    def save_comment(self):
+        return self.save()
+
+    
+    @classmethod
+    def update_comment(cls,update_details,id):
+        return cls.objects.filter(id=int(id)).update(comment=update_details['comment'])
+
+
+    def delete_comment(self):
+        return self.delete()
+
+
 
     def __str__(self):
         return f'{self.user.user.username} Comment on {self.image.name}'
