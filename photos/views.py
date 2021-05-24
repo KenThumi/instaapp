@@ -171,3 +171,21 @@ def delete_image(request,image_id):
     messages.success(request, 'Image Deleted successfully.')
     
     return redirect('home')
+
+
+
+def search(request):
+
+    if request.method=='POST':
+
+        needle = request.POST['search']
+
+        images=Image.objects.filter(name__icontains=needle).all()
+
+        users = user = User.objects.exclude(username=request.user.username) 
+
+        ctx = {'images':images, 'users':users, 'search_results':f'Search Results ({images.count()})'}
+
+        return render(request, 'index.html',ctx)
+
+    return redirect('home')

@@ -29,6 +29,15 @@
       
        </div>
         {% endif %}
+
+           <!-- search results -->
+           {% if search_results %}
+           <div class="col-12">
+               <h4 class="text-center">
+                       {{search_results}}
+                   </h4>
+           </div>
+           {%endif%}
         <!-- images -->
         <div class="col-md-8">
             {%for image in images %}

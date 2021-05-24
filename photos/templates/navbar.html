@@ -12,10 +12,13 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
       </ul>
-      <!-- <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
+      <form class="form-inline my-2 my-lg-0 mx-md-auto" method="POST" action="{% url 'search' %}">
+        {% csrf_token %}
+        <input name='search' class="form-control form-control-sm mr-sm-2" type="search" placeholder="Search image name" aria-label="Search">
+        <button class="btn btn-outline-info btn-sm my-2 my-sm-0" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
       {% if user.is_authenticated %}
       <ul class="navbar-nav mr-md-5">
         <li class="nav-item dropdown float-md-right">
