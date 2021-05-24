@@ -70,3 +70,20 @@ class ImageTestClass(TestCase):
         self.assertEqual(self.updated_image.image.url, cloudinary_url_prefix+'newlink.png')
 
 
+
+    def test_delete_image(self):
+        self.user_1.save()
+        self.profile.save()
+        self.image.save()
+
+        self.image2 = Image.objects.get(pk=self.image.id)
+
+
+
+        self.image2.delete_image()
+
+        images = Image.objects.all()
+
+        self.assertTrue(images.count() == 0)
+
+
