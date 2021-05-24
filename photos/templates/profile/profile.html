@@ -48,13 +48,17 @@
             
        
         </div>
-
+    
+    </div>
+    <div class="row">
         <!-- user post -->
-        <div class="col-12">
-            <h4 class="text-center mt-3">
-                My Images
-            </h4>
-            <hr>
+             <div class="col-12">
+                <h4 class="text-center mt-3">
+                    My Images
+                </h4>
+                <hr>
+             </div>
+            
               <!-- images -->
         
             {%for image in user.profile.images.all %}
@@ -146,9 +150,10 @@
 
        
         
-    </div>
+  
 
     
 
+</div>
 </div>
 {% endblock %}
